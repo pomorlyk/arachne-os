@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --studio-bg: #131314;
+  --studio-surface: #1e1f20;
+  --studio-elevated: #282a2c;
+  --studio-border: #2d2e30;
+  --studio-border-strong: #3c4043;
+  --studio-text: #e3e3e3;
+  --studio-text-muted: #9aa0a6;
+  --studio-accent: #a8c7fa;
+  --studio-accent-bg: rgba(168, 199, 250, 0.12);
+  --scrollbar-track: #131314;
+  --scrollbar-thumb: #5f6368;
+
+  color-scheme: dark;
+  accent-color: var(--studio-accent);
+  scrollbar-width: auto;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+body {
+  background-color: var(--studio-bg);
+  color: var(--studio-text);
+  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Google Sans", "PingFang SC", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background-color: rgba(168, 199, 250, 0.28);
+  color: #ffffff;
+}
+
+textarea {
+  field-sizing: content;
+  resize: vertical;
+}
+
+@supports not (scrollbar-color: auto) {
+  *::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+  *::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+  }
+  *::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+  }
+}
+
+/* React Flow Studio dark overrides */
+.react-flow__attribution {
+  display: none;
+}
+.react-flow__controls {
+  box-shadow: none !important;
+  border: 1px solid #3c4043 !important;
+  border-radius: 8px !important;
+  overflow: hidden;
+}
+.react-flow__controls-button {
+  background: #1e1f20 !important;
+  border-bottom: 1px solid #2d2e30 !important;
+  fill: #9aa0a6 !important;
+}
+.react-flow__controls-button:hover {
+  background: #282a2c !important;
+  fill: #e3e3e3 !important;
+}
+
+/* Validate input only after interaction (:user-invalid + fallback) */
+.field-hint {
+  display: block;
+  font-size: 0.75rem;
+  color: #9aa0a6;
+  margin-bottom: 0.25rem;
+}
+
+.field-error-msg {
+  display: none;
+  font-size: 0.75rem;
+  color: #f28b82;
+  margin-top: 0.25rem;
+}
+
+input.validated-input:not(input[type="range"]):is(:user-invalid, .user-invalid-fallback) {
+  border-color: #f28b82;
+  background-color: rgba(242, 139, 130, 0.08);
+}
+
+input.validated-input:not(input[type="range"]):is(:user-invalid, .user-invalid-fallback) + .field-error-msg {
+  display: block;
+}
+
+input.validated-input:not(input[type="range"]):user-valid {
+  border-color: #81c995;
+}
+
+/* Keep core login, approval and chat controls accessible on narrow screens. */
+@media (max-width: 767px) {
+  .app-header { flex-wrap: wrap; gap: .5rem; }
+  .app-header > div { max-width: 100%; flex-wrap: wrap; }
+  .business-layout { flex-direction: column; }
+  .business-sidebar { width: 100%; max-height: 25vh; border-right: 0; border-bottom: 1px solid var(--studio-border); }
+  .business-layout > main { min-height: 0; }
+  input, textarea, select { min-width: 0; max-width: 100%; }
+  button { white-space: normal; }
+  pre { max-width: 100%; }
+}

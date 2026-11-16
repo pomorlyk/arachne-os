@@ -44,3 +44,4 @@
 ## 4. Python 与前端依赖管理准则
 - Python 后端统一使用项目内虚拟环境（`backend/.venv` + `backend/requirements.txt`），**严禁全局执行 `pip install`**。
 - 前端统一在 `frontend/` 下使用 `npm` 管理依赖，确保 TypeScript 严格模式编译零错误。
+

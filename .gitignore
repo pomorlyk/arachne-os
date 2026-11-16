@@ -5,6 +5,7 @@ __pycache__/
 .venv/
 venv/
 .pytest_cache/
+.ruff_cache/
 *.egg-info/
 
 # Environment & Secrets
@@ -15,14 +16,20 @@ venv/
 *.db
 *.db-journal
 *.db-wal
+*.db-shm
+*.runtime.lock
+vault_storage/.append.lock
 vault_storage/ledger.jsonl
 vault_storage/snapshots/*.json
 sandbox_workspace/*.py
+sandbox_workspace/simulations/
 
 # Frontend / Node
 node_modules/
 frontend/dist/
 frontend/.vite/
+*.tsbuildinfo
 
 # OS
 .DS_Store
+
